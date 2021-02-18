@@ -52,7 +52,7 @@ foreach($products as $key => $value){
             try{
                 $params = [];
 
-                $SQL="INSERT INTO category (id,name) VALUES (:id,:name)";
+                $SQL="INSERT INTO categorie (id,name) VALUES (:id,:name)";
                 $prep = $bdd->prepare($SQL);
 
                 $params["id"] = $valueC["id"];
@@ -69,6 +69,29 @@ foreach($products as $key => $value){
                 var_dump($exception);
                 exit('error');
             }
+        }
+
+        //insert categories link with products
+        try{
+            $params1 = [];
+
+            $SQL1="INSERT INTO categories (ref_product,id_category) VALUES (:ref_product,:id_category)";
+            
+            $prep1 = $bdd->prepare($SQL1);
+
+            $params1["ref_product"] = $value["ref"];
+            $params1["id_category"] = $valueC["id"];
+
+            $res1 = $prep1->execute($params1);
+            if(!$res1){
+                $error = $prep1->errorInfo();
+                echo "Error scriptsPHP insert categories : {$error[2]}";
+                exit();
+            }
+        }
+        catch (\Exception $exception) {
+            var_dump($exception);
+            exit('error');
         }
     }
 
