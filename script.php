@@ -1,7 +1,7 @@
 <?php
-include_once '../pdo/pdo.php';
+include_once 'model/pdo.php';
 
-$bdd = bdd();
+$bdd = Connexion::bdd();
 $productsArray = [];
 $categoriesArray = [];
 
@@ -35,6 +35,8 @@ foreach($products as $key => $value){
                 $error = $prep->errorInfo();
                 echo "Error scriptsPHP insert products : {$error[2]}";
                 exit();
+            }else{
+                echo "Products are inserted! <br/>";
             }
         }
         catch (\Exception $exception) {
@@ -63,6 +65,8 @@ foreach($products as $key => $value){
                     $error = $prep->errorInfo();
                     echo "Error scriptsPHP insert categories : {$error[2]}";
                     exit();
+                }else{
+                    echo "Categories are inserted! <br/>";
                 }
             }
             catch (\Exception $exception) {
@@ -87,6 +91,8 @@ foreach($products as $key => $value){
                 $error = $prep1->errorInfo();
                 echo "Error scriptsPHP insert categories : {$error[2]}";
                 exit();
+            }else{
+                echo "Link between categories & products are created! <br/>";
             }
         }
         catch (\Exception $exception) {
