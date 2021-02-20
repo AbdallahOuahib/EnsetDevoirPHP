@@ -21,7 +21,11 @@
                 <?php
                     $links = "";
                     for ($i = 1; $i <= $total_pages; $i++) {
-                        $links .= ($i != $page ) ? "<li><a href='index.php?page=$i&category=$category'>Page $i</a></li> " : "<li class='active'><a href='index.php?page=$i&category=$category'>Page $i</a></li> ";
+                        if(!empty($category)){
+                            $links .= ($i != $page ) ? "<li><a href='index.php?page=$i&category=$category'>Page $i</a></li> " : "<li class='active'><a href='index.php?page=$i&category=$category'>Page $i</a></li> ";
+                        }else{
+                            $links .= ($i != $page ) ? "<li><a href='index.php?page=$i'>Page $i</a></li> " : "<li class='active'><a href='index.php?page=$i'>Page $i</a></li> ";
+                        }
                     }
                     echo $links;
                 ?>
