@@ -1,6 +1,7 @@
 <div class="row product-list">
     <?php 
-    $products = Product::getProducts(array("offset"=>$offset,"per_page"=>$per_page));
+    $category = (isset($_GET['category'])) ? (string)$_GET['category'] : "";
+    $products = Product::getProducts(array("offset"=>$offset,"per_page"=>$per_page,"category"=>$category));
     foreach($products as $key => $value ){ ?>
         <div class="col-md-4">
             <section class="panel panel-product">

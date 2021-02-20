@@ -13,46 +13,8 @@
                 Category
             </header>
             <div class="panel-body">
-                <ul class="nav prod-cat">
-                    <li>
-                        <a href="#" class="active"><i class="fa fa-angle-right"></i> Dress</a>
-                        <ul class="nav">
-                            <li class="active"><a href="#">- Shirt</a></li>
-                            <li><a href="#">- Pant</a></li>
-                            <li><a href="#">- Shoes</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Bags &amp; Purses</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Beauty</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Coat &amp; Jacket</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Jeans</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Jewellery</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Electronics</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Sports</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Technology</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Watches</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-angle-right"></i> Accessories</a>
-                    </li>
-                </ul>
+                <?php include_once "view/list-categories.php"; ?>
+                
             </div>
         </section>
         <section class="panel">
@@ -145,7 +107,7 @@
     </div>
     <div class="col-md-9">
         <?php include_once "view/pagination.php"; ?>
-        <?php include_once "view/products.php"; ?>
+        <?php include_once "view/list-products.php"; ?>
     </div>
 </div>
 

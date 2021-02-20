@@ -3,14 +3,26 @@ include_once 'model/pdo.php';
 
 class Product {
 
-    public static function countProducts(){
+    public static function countProducts(array $args){
         $bdd = Connexion::bdd();
         
         try{
-            $SQL="  SELECT  COUNT(*) as total FROM product ";
+            $SQL=" SELECT  COUNT(*) as total FROM product";
 
-            $prep = $bdd->query($SQL);
-            $prep->execute();
+            if( isset($args["category"]) && !empty($args["category"]) ){
+                $SQL.=" INNER JOIN categories ON categories.ref_product = product.ref
+                        INNER JOIN categorie ON categories.id_category = categorie.id
+                        WHERE categorie.id LIKE :category";
+            }
+
+            $prep = $bdd->prepare($SQL);
+
+            if( isset($args["category"]) && !empty($args["category"]) ){
+                $prep->execute(['category'=>$args["category"]]);
+            }else{
+                $prep->execute();
+            }
+
             $row=$prep->fetch();
             return $row;
         }
@@ -24,9 +36,24 @@ class Product {
         $bdd = Connexion::bdd();
         try{
 
-            $SQL="SELECT product.* FROM product LIMIT :offset, :per_page";
+            $SQL="SELECT product.* FROM product ";
+
+            if( isset($args["category"]) && !empty($args["category"]) ){
+                $SQL .= " INNER JOIN categories ON categories.ref_product = product.ref
+                INNER JOIN categorie ON categories.id_category = categorie.id
+                WHERE categorie.id LIKE :category
+                LIMIT :offset, :per_page";
+            } else {
+                $SQL .= " LIMIT :offset, :per_page";
+            }
+            
             $prep = $bdd->prepare($SQL);
-            $prep->execute(['offset'=>$args["offset"], 'per_page'=>$args["per_page"]]);
+
+            if( isset($args["category"]) && !empty($args["category"]) ){
+                $prep->execute(['offset'=>$args["offset"], 'per_page'=>$args["per_page"], 'category'=>$args["category"]]);
+            }else{
+                $prep->execute(['offset'=>$args["offset"], 'per_page'=>$args["per_page"]]);
+            }
 
             $data = [];
             while ( $row = $prep->fetch(\PDO::FETCH_ASSOC) ) {
@@ -72,4 +99,46 @@ class Product {
         }
     }
 
+
+    public static function getCategories(){
+        $bdd = Connexion::bdd();
+        try{
+
+            $SQL="SELECT categorie.* FROM categorie";
+            $prep = $bdd->prepare($SQL);
+            $prep->execute();
+
+            $data = [];
+            while ( $row = $prep->fetch(\PDO::FETCH_ASSOC) ) {
+                array_push($data,$row);
+            }
+            return $data;
+        }
+        catch (\Exception $exception) {
+            var_dump($exception);
+            exit('error');
+        }
+    }
+
+    public static function getCountProductsByCategroy(array $args){
+        $bdd = Connexion::bdd();
+        try{
+
+            $SQL="SELECT COUNT(*) as countP FROM product
+                    INNER JOIN categories ON categories.ref_product = product.ref
+                    INNER JOIN categorie ON categories.id_category = categorie.id
+                    WHERE categorie.id LIKE :id";
+            $prep = $bdd->prepare($SQL);
+            $prep->execute(['id'=>$args["id"]]);
+
+            $row=$prep->fetch();
+            return $row;
+        }
+        catch (\Exception $exception) {
+            var_dump($exception);
+            exit('error');
+        }
+    }
+
+    //getProductsByCategory
 }

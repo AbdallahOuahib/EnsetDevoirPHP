@@ -5,10 +5,11 @@
     }
   
     $per_page = 12;
-
-    $total = Product::countProducts();
+    $category = (isset($_GET['category'])) ? (string)$_GET['category'] : "";
+    $total = Product::countProducts(array("category"=>$category));
 
     $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+    
     $total_pages = ceil($total["total"] / $per_page);
     $offset = ($page-1) * $per_page;
 
@@ -20,7 +21,7 @@
                 <?php
                     $links = "";
                     for ($i = 1; $i <= $total_pages; $i++) {
-                        $links .= ($i != $page ) ? "<li><a href='index.php?page=$i'>Page $i</a></li> " : "<li class='active'><a href='index.php?page=$i'>Page $i</a></li> ";
+                        $links .= ($i != $page ) ? "<li><a href='index.php?page=$i&category=$category'>Page $i</a></li> " : "<li class='active'><a href='index.php?page=$i&category=$category'>Page $i</a></li> ";
                     }
                     echo $links;
                 ?>
