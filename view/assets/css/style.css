@@ -299,3 +299,8 @@
     display: table;
     clear: both;
   }
+
+  .img-miniature {
+    width: 75px;
+    height: 85px;
+  }

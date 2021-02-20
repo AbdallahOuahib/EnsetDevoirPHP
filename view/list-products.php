@@ -8,11 +8,14 @@
                 <div class="pro-img-box">
                     <img src="<?php echo $value["Image"]; ?>" 
                         alt='<?php echo $value["name"]; ?>' class="img-responsive" />
-                    <a href="#" class="adtocart">
+                    <a  href="#" class="adtocart" 
+                        data-ref="<?php echo $value["ref"]; ?>"
+                        data-price="<?php echo $value["price"]; ?>"
+                        data-img="<?php echo $value["Image"]; ?>"
+                        data-name="<?php echo $value["name"]; ?>">
                         <i class="fa fa-shopping-cart"></i>
                     </a>
                 </div>
-
                 <div class="panel-body text-center">
                     <h4>
                         <a href="#" class="pro-title">

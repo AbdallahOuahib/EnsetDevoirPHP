@@ -29,12 +29,6 @@
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-(function(){
-    $("#cart").on("click", function() {
-        $(".shopping-cart").fadeToggle( "fast");
-    });
-})();
-</script>
+<script type="text/javascript" src="view/assets/js/scripts.js"></script>
 </body>
 </html>
