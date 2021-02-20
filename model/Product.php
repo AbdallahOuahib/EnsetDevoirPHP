@@ -42,11 +42,12 @@ class Product {
                 $SQL .= " INNER JOIN categories ON categories.ref_product = product.ref
                 INNER JOIN categorie ON categories.id_category = categorie.id
                 WHERE categorie.id LIKE :category
+                ORDER BY product.price ASC
                 LIMIT :offset, :per_page";
             } else {
-                $SQL .= " LIMIT :offset, :per_page";
+                $SQL .= " ORDER BY product.price ASC LIMIT :offset, :per_page";
             }
-            
+
             $prep = $bdd->prepare($SQL);
 
             if( isset($args["category"]) && !empty($args["category"]) ){
