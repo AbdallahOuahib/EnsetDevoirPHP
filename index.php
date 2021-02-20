@@ -1,20 +1,6 @@
-<?php 
-include_once 'model/Product.php';
-$products = Product::getProducts();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Shop product list - Bootdey.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="assets/css/style.css" />
-
-</head>
-<body>
-
+<?php include_once "view/header.php"; ?>
+<body class="body">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
 <div class="container bootdey">
     <div class="col-md-3">
         <section class="panel">
@@ -158,42 +144,8 @@ $products = Product::getProducts();
         </section>
     </div>
     <div class="col-md-9">
-        <section class="panel">
-            <div class="panel-body">
-                <div class="pull-right">
-                    <ul class="pagination pagination-sm pro-page-list">
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <div class="row product-list">
-            <?php foreach($products as $key => $value ){ ?>
-                <div class="col-md-4">
-                    <section class="panel">
-                        <div class="pro-img-box">
-                            <img src="<?php echo $value["Image"]; ?>" alt="<?php echo $value["name"]; ?>" />
-                            <a href="#" class="adtocart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </a>
-                        </div>
-
-                        <div class="panel-body text-center">
-                            <h4>
-                                <a href="#" class="pro-title">
-                                    <?php echo $value["name"]; ?>
-                                </a>
-                            </h4>
-                            <p class="price"><?php echo $value["price"]; ?></p>
-                        </div>
-                    </section>
-                </div>
-            <?php } ?>
-        </div>
+        <?php include_once "view/pagination.php"; ?>
+        <?php include_once "view/products.php"; ?>
     </div>
 </div>
 

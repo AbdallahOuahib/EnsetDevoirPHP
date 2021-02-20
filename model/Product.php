@@ -3,16 +3,33 @@ include_once 'model/pdo.php';
 
 class Product {
 
-    public static function getProducts(){
+    public static function countProducts(){
         $bdd = Connexion::bdd();
+        
         try{
-            $SQL="SELECT product.* FROM product";
+            $SQL="  SELECT  COUNT(*) as total FROM product ";
 
             $prep = $bdd->query($SQL);
             $prep->execute();
+            $row=$prep->fetch();
+            return $row;
+        }
+        catch (\Exception $exception) {
+            var_dump($exception);
+            exit('error');
+        }
+    }
+
+    public static function getProducts(array $args){
+        $bdd = Connexion::bdd();
+        try{
+
+            $SQL="SELECT product.* FROM product LIMIT :offset, :per_page";
+            $prep = $bdd->prepare($SQL);
+            $prep->execute(['offset'=>$args["offset"], 'per_page'=>$args["per_page"]]);
 
             $data = [];
-            while($row=$prep->fetch()){
+            while ( $row = $prep->fetch(\PDO::FETCH_ASSOC) ) {
                 array_push($data,$row);
             }
             return $data;
