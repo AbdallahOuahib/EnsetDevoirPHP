@@ -1,10 +1,5 @@
 <?php 
     include_once 'model/Product.php';
-    
-    if(!isset($_SESSION['IdUser'])) {
-        header('Location:sign-in.php');
-        exit;
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -23,7 +23,10 @@
     <ul class="shopping-cart-items list-unstyled">
 
     </ul>
-
-    <a href="#" class="button">Checkout</a>
+    <form action="" method="POST">
+      <input type="hidden" id="hiddenRefProd" name="ref_product[]" value="" />
+      <button href="#" class="btn button" type="submit">Commander</button>
+    </form>
+    
   </div> <!--end shopping-cart -->
 </div> <!--end container -->
