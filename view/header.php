@@ -1,8 +1,8 @@
 <?php 
     include_once 'model/Product.php';
     
-    if(!isset($_SESSION['idUser'])) {
-        header("Location: view/sign-in.php");
+    if(!isset($_SESSION['IdUser'])) {
+        header('Location:sign-in.php');
         exit;
     }
 ?>

@@ -44,6 +44,7 @@ class User {
     }
 
     public static function getUserInfo(array $args){
+        $bdd = Connexion::bdd();
         try{
 
             $requete = $bdd->prepare('SELECT IdUser FROM user WHERE pseudo LIKE :pseudo ');

@@ -1,21 +1,23 @@
 <?php
-include_once '../model/pdo.php';
-include_once '../../controller/UserController.php';
+include_once 'controller/UserController.php';
 
 $bdd = Connexion::bdd();
-
 if(isset($_SESSION['idUser'])) {
-     header("Location: index.php");
-     exit;
+    header('Location:http://localhost/ecommerceENSET/index.php');
+    exit;
 }
 
 if(isset($_POST['pseudo']) AND isset($_POST['password'])){
     $user = new UserController($_POST['pseudo'],md5($_POST['password']));
-    $verif = $user->createAccount();
-    if($verif){
-        header("Location: sign-in.php");
+    $verif = $user->signIn();
+    
+    if($verif == "ok"){
+          $user->createSession();
+          header('Location:http://localhost/ecommerceENSET/index.php');
+          exit();
     } else { 
-        $erreur = $verif; 
+      header('Location:sign-in.php');
+      exit;
     }
 }
 ?>
@@ -31,30 +33,28 @@ if(isset($_POST['pseudo']) AND isset($_POST['password'])){
     <link rel="icon" href="../../favicon.ico">
     <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/signin/">
 
-    <title>Devoir WEB - Signup</title>
+    <title>Devoir WEB - Sign in</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/signin.css" rel="stylesheet">
+    <link href="view/assets/css/signin.css" rel="stylesheet">
   </head>
 
   <body>
 
     <div class="container">
-      <form class="form-signin" action="" method="POST">
-        <h2 class="form-signin-heading">Please sign up in Devoir WEB</h2>
+      <form class="form-signin" action="" method="POST" data-ajax="false">
+        <h2 class="form-signin-heading">Please sign in Devoir WEB</h2>
         <label for="pseudo" class="sr-only">Pseudo</label>
         <input  type="text" id="pseudo" name="pseudo" class="form-control" 
                 placeholder="Pseudo" required autofocus>
         <label for="password" class="sr-only">Password</label>
         <input  type="password" id="password" name="password" class="form-control" 
                 placeholder="Password" required>
-        <label for="password" class="sr-only">Rewrite password</label>
-        <input  type="password2" id="password2" name="password2" class="form-control" 
-                placeholder="Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a href="sign-up.php">Create Account for free!</a>
       </form>
     </div> <!-- /container -->
 
