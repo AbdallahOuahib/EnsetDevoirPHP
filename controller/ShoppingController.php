@@ -3,11 +3,18 @@ include_once 'model/pdo.php';
 include_once 'model/Commande.php';
 
 class ShoppingController {
-    //check session before making the command
+
+    private $ref;
+	private $bdd;
+
+	public function __construct($ref){
+        $this->ref = $ref;
+        $this->bdd = Connexion::bdd();
+	}
+
     public function createCommande(){
-        //if session introuvable, mets les post ds une session et crée la commande
         if(isset($_SESSION['IdUser'])) {
-            Commande::createCommande(array('user_id'=>$_SESSION["IdUser"]));
+            Commande::createCommande(array('user_id'=>$_SESSION["IdUser"],'ref_products'=>$this->ref));
         }else{
             header('Location:sign-in.php');
             exit();

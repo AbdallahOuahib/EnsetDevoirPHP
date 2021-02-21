@@ -1,5 +1,21 @@
 <?php 
     include_once 'model/Product.php';
+    include_once 'controller/ShoppingController.php';
+
+    if( isset($_POST['ref_product']) ){
+        $shop = new ShoppingController($_POST['ref_product']);
+        $verif = $shop->createCommande();
+        
+        if($verif == "ok"){
+              $user->createSession();
+              header('Location:http://localhost/ecommerceENSET/index.php');
+              exit();
+        } else { 
+          header('Location:sign-in.php');
+          exit;
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
