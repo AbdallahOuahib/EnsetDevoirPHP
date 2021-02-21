@@ -41,17 +41,18 @@ class Commande {
                         
                         $paramsAssoc["Id_Commande"] = $lastIdCommande;
                         if( strlen($saladeLoop[$p]) > 2 ){
-                            $paramsAssoc["Id_Commande"] = $saladeLoop[$p];
-                        }else{
-                            $paramsAssoc["Qte"] = $saladeLoop[$p];
+                            $paramsAssoc["ref_product"] = $saladeLoop[$p];
+                            $paramsAssoc["Qte"] = $saladeLoop[$p+1];
+
+                            $res1 = $prep1->execute($paramsAssoc);
+                            if(!$res1){
+                                $error1 = $prep1->errorInfo();
+                                echo "Error create Commande Assoc : {$error1[2]}";
+                                exit();
+                            }
+
                         }
                         
-                        $res1 = $prep1->execute($paramsAssoc);
-                        if(!$res1){
-                            $error1 = $prep1->errorInfo();
-                            echo "Error create Commande Assoc : {$error1[2]}";
-                            exit();
-                        }
                     }
                     catch (\Exception $exception) {
                         var_dump($exception);
