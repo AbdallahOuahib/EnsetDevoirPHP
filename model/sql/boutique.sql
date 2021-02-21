@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 18 fév. 2021 à 22:13
+-- Généré le : Dim 21 fév. 2021 à 19:55
 -- Version du serveur :  10.4.11-MariaDB
 -- Version de PHP : 7.4.2
 
@@ -483,6 +483,49 @@ CREATE TABLE `commande` (
   `user_id` int(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id`, `user_id`) VALUES
+(1, 3),
+(2, 3),
+(3, 3),
+(4, 3),
+(5, 3),
+(6, 3),
+(7, 3),
+(8, 3),
+(9, 3),
+(10, 3),
+(11, 3),
+(12, 3),
+(13, 3),
+(14, 3),
+(15, 3),
+(16, 3),
+(17, 3),
+(18, 3),
+(19, 3),
+(20, 3),
+(21, 3),
+(22, 3),
+(23, 3),
+(24, 3),
+(25, 3),
+(26, 3),
+(27, 3),
+(28, 3),
+(29, 3),
+(30, 3),
+(31, 3),
+(32, 3),
+(33, 3),
+(34, 3),
+(35, 3),
+(36, 3),
+(37, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -492,8 +535,21 @@ CREATE TABLE `commande` (
 CREATE TABLE `commandeproductassoc` (
   `id` int(80) NOT NULL,
   `Id_Commande` int(80) NOT NULL,
-  `ref_product` varchar(80) COLLATE utf8_bin NOT NULL
+  `ref_product` varchar(80) COLLATE utf8_bin NOT NULL,
+  `Qte` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `commandeproductassoc`
+--
+
+INSERT INTO `commandeproductassoc` (`id`, `Id_Commande`, `ref_product`, `Qte`) VALUES
+(1, 30, '1003451', 1),
+(2, 36, '1003451', 1),
+(3, 36, '1003232', 1),
+(4, 37, '1003085', 1),
+(5, 37, '333179', 2),
+(6, 37, '48530', 4);
 
 -- --------------------------------------------------------
 
@@ -631,6 +687,18 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`IdUser`, `pseudo`, `password`) VALUES
+(1, 'pseudo', '14e1b600b1fd579f47433b88e8d85291'),
+(2, 'pseudo', '14e1b600b1fd579f47433b88e8d85291'),
+(3, 'pseudo2', '14e1b600b1fd579f47433b88e8d85291'),
+(4, 'pseudo2', '14e1b600b1fd579f47433b88e8d85291'),
+(5, 'pseudo3', '14e1b600b1fd579f47433b88e8d85291'),
+(6, 'pseudo3', '14e1b600b1fd579f47433b88e8d85291');
+
+--
 -- Index pour les tables déchargées
 --
 
@@ -678,19 +746,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT pour la table `commandeproductassoc`
 --
 ALTER TABLE `commandeproductassoc`
-  MODIFY `id` int(80) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(80) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `IdUser` int(80) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdUser` int(80) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
