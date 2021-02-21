@@ -6,6 +6,7 @@
     </ul> <!--end navbar-left -->
 
     <ul class="navbar-right">
+      <li> <?php echo $_SESSION["pseudo"]  ?> - <a href="deconnexion.php"> Deconnexion </a></li>
       <li><a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Panier <span class="badge badge-items">0</span></a></li>
     </ul> <!--end navbar-right -->
   </div> <!--end container -->

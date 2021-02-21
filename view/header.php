@@ -2,6 +2,11 @@
     include_once 'model/Product.php';
     include_once 'controller/ShoppingController.php';
 
+    if(!isset($_SESSION['IdUser'])) {
+        header('Location:sign-in.php');
+        exit;
+    }
+
     if( isset($_POST['ref_product']) ){
         $shop = new ShoppingController($_POST['ref_product']);
         $verif = $shop->createCommande();
