@@ -3,7 +3,7 @@ include_once 'controller/UserController.php';
 
 $bdd = Connexion::bdd();
 if(isset($_SESSION['IdUser'])) {
-    header('Location:http://localhost/ecommerceENSET/index.php');
+    header('Location:index.php');
     exit;
 }
 
@@ -13,7 +13,7 @@ if(isset($_POST['pseudo']) AND isset($_POST['password'])){
     
     if($verif == "ok"){
           $user->createSession();
-          header('Location:http://localhost/ecommerceENSET/index.php');
+          header('Location:index.php');
           exit();
     } else { 
       header('Location:sign-in.php');
@@ -32,7 +32,6 @@ if(isset($_POST['pseudo']) AND isset($_POST['password'])){
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/signin/">
-
     <title>Devoir WEB - Sign in</title>
 
     <!-- Bootstrap core CSS -->
@@ -42,20 +41,24 @@ if(isset($_POST['pseudo']) AND isset($_POST['password'])){
     <link href="view/assets/css/signin.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="backlogin">
 
     <div class="container">
-      <form class="form-signin" action="" method="POST" data-ajax="false">
-        <h2 class="form-signin-heading">Please sign in Devoir WEB</h2>
-        <label for="pseudo" class="sr-only">Pseudo</label>
-        <input  type="text" id="pseudo" name="pseudo" class="form-control" 
-                placeholder="Pseudo" required autofocus>
-        <label for="password" class="sr-only">Password</label>
-        <input  type="password" id="password" name="password" class="form-control" 
-                placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a href="sign-up.php">Create Account for free!</a>
-      </form>
+        <form class="form-signin" action="" method="POST" data-ajax="false">
+          <h2 class="form-signin-heading text-center">Please sign in Devoir WEB</h2>
+          <div class="form-group">
+            <label for="pseudo" class="sr-only">Pseudo</label>
+            <input  type="text" id="pseudo" name="pseudo" class="form-control form-control-sm mb-2" 
+                    placeholder="Pseudo" required autofocus>
+          </div>
+          <div class="form-group">
+            <label for="password" class="sr-only">Password</label>
+            <input  type="password" id="password" name="password" class="form-control form-control-sm mb-2" 
+                    placeholder="Password" required>
+          </div>
+          <button class="btn btn-lg btn-primary btn-sm btn-block" type="submit">Sign in</button>
+          <div class="linkaccount text-center"><a href="sign-up.php">Create Account for free!</a></div>
+        </form>
     </div> <!-- /container -->
 
   </body>

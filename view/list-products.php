@@ -11,6 +11,7 @@
                     <a  href="#" class="adtocart" 
                         data-ref="<?php echo $value["ref"]; ?>"
                         data-price="<?php echo $value["price"]; ?>"
+                        data-ship="<?php echo $value["shipping"]; ?>"
                         data-img="<?php echo $value["Image"]; ?>"
                         data-name="<?php echo $value["name"]; ?>">
                         <i class="fa fa-shopping-cart"></i>

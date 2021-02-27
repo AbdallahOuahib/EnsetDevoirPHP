@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     var nbrItems = 0;
     var totalPrices=0;
+    var totalShipping=0;
 
     $("#cart").on("click", function() {
         $(".shopping-cart").fadeToggle( "fast");
@@ -17,23 +18,29 @@ $(document).ready(function(){
         var price = $(this).attr('data-price');
         var name = $(this).attr('data-name');
         var img = $(this).attr('data-img');
+        var ship = $(this).attr('data-ship');
 
         var html = '<li class="clearfix item" data-ref="'+ref+'"><img class="img-miniature" src="'+img+'" alt="'+name+'" />';
         html += '<span class="item-name">'+name+'</span>';
-        html += '<span class="item-price">'+price+'</span>';
+        html += '<div class="item-price">'+price+'</div>';
         html += '<span class="item-quantity">Quantity:';
         html += '<input type="number" classe="qte-cart" name="qte" min="1" max="10" value="1" data-price="'+price+'" data-ref="'+ref+'">';
         html += '</span>';
-        html += '<label class="item-removal text-danger" data-priceremove="'+price+'" data-qteremove="1" data-refremove="'+ref+'">Remove</label>';
+        html += '<h4 class="item-removal text-danger" data-shipremove="'+ship+'" data-priceremove="'+price+'" data-qteremove="1" data-refremove="'+ref+'"><i class="fa fa-trash pull-right"></i></h4>';
         html += '</li>';
 
         $(".shopping-cart-items").append(html);
+        appendToStorage('html', html);
         $(".badge-items").html(nbrItems);
 
         totalPrices += Number(price);
+        totalShipping += Number(ship);
+
         $(".main-color-text").html(totalPrices.toFixed(2));
+        $(".main-shipping-text").html(totalShipping.toFixed(2));
 
         setHiddenInput(ref,1);
+
     });
 
     $('body').on("change",":input[type='number']", function () { 
@@ -71,6 +78,7 @@ $(document).ready(function(){
 
             removeValue(ref);
             setHiddenInput(ref,item);
+
         }
         
     });
@@ -81,16 +89,18 @@ $(document).ready(function(){
         var price = $(this).attr('data-priceremove');
         var item = $(this).attr('data-qteremove');
         var ref = $(this).attr('data-refremove');
+        var ship = $(this).attr('data-shipremove');
 
         totalPrices -= Number(price);
         nbrItems -= Number(item);
+        totalShipping -= Number(ship);
 
         $(".total-price").html(totalPrices.toFixed(2));
         $(".badge-items").html(nbrItems);
+        $(".main-shipping-text").html(totalShipping.toFixed(2));
 
         removeValue(ref);
     });
-
 
 });
 

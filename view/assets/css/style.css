@@ -1,12 +1,11 @@
 .body{
-    margin-top:20px;
     background:#f1f2f7;
 }
 
 /*panel*/
 .panel {
-    border: none;
     box-shadow: none;
+    border:1px solid #999;
 }
 
 .panel-product{
@@ -16,7 +15,9 @@
 .panel-heading {
     border-color:#eff2f7 ;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 600;
+    background: #FF6F91;
+    color: #fff;
 }
 
 .panel-title {
@@ -102,6 +103,7 @@
     display: inline-block;
     margin-top: 20px;
     font-size: 16px;
+    font-weight: 600;
 }
 
 .product-list .price {
@@ -171,9 +173,10 @@
 
   
   nav {
-    padding: 20px 0 40px 0;
-    background: #F8F8F8;
+    padding: 20px 0 0 0;
+    background: #845EC2;
     font-size: 16px;
+    margin-bottom: 5px;
   }
   nav .navbar-left {
     float: left;
@@ -184,9 +187,10 @@
   nav ul li {
     display: inline;
     padding-left: 20px;
+    color: #fff;
   }
   nav ul li a {
-    color: #777777;
+    color: #fff;
     text-decoration: none;
   }
   nav ul li a:hover {
@@ -194,7 +198,7 @@
   }
 
   .lighter-text {
-    color: #ABB0BE;
+    color: #ffffff;
   }
   
   .main-color-text {
@@ -220,11 +224,14 @@
   }
   
   .shopping-cart {
+    right: 10%;
     margin: 20px 0;
     float: right;
-    background: white;
+    z-index: 10;
+    top: 35px;
+    background: #845EC2;
     width: 320px;
-    position: relative;
+    position: absolute;
     border-radius: 3px;
     padding: 20px;
   }
@@ -240,6 +247,10 @@
   }
   .shopping-cart .shopping-cart-items li {
     margin-bottom: 18px;
+    background: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #999;
   }
   .shopping-cart .shopping-cart-items img {
     float: left;
@@ -248,7 +259,8 @@
   .shopping-cart .shopping-cart-items .item-name {
     display: block;
     padding-top: 10px;
-    font-size: 16px;
+    font-size: 12px;
+    font-weight: 600;
   }
   .shopping-cart .shopping-cart-items .item-price {
     color: #6394F8;
@@ -283,7 +295,6 @@
     background: #6394F8;
     color: white;
     text-align: center;
-    padding: 12px;
     text-decoration: none;
     display: block;
     border-radius: 3px;
@@ -303,4 +314,9 @@
   .img-miniature {
     width: 75px;
     height: 85px;
+  }
+
+  nav ul li a:hover{
+    color:#fff ;
+    text-decoration: none;
   }

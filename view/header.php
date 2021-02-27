@@ -13,7 +13,7 @@
         
         if($verif == "ok"){
               $user->createSession();
-              header('Location:http://localhost/ecommerceENSET/index.php');
+              header('Location:index.php');
               exit();
         } else { 
           header('Location:sign-in.php');

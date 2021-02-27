@@ -5,7 +5,7 @@ include_once 'controller/UserController.php';
 $bdd = Connexion::bdd();
 
 if(isset($_SESSION['IdUser'])) {
-     header('Location:http://localhost/ecommerceENSET/index.php');
+     header('Location:index.php');
      exit;
 }
 

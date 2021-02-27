@@ -5,15 +5,10 @@
 <div class="container">
     <div class="col-md-3">
         <section class="panel">
-            <div class="panel-body">
-                <input type="text" placeholder="Keyword Search" class="form-control" />
-            </div>
-        </section>
-        <section class="panel">
             <header class="panel-heading">
                 Category
             </header>
-            <div class="panel-body">
+            <div class="panel-bod">
                 <?php include_once "view/list-categories.php"; ?>
             </div>
         </section>
